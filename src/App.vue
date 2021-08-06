@@ -4,12 +4,12 @@
       <div class="btn">
         <el-button type="primary" @click="init">获取设备信息</el-button>
       </div>
-      <el-form ref="form" label-width="140px">
+      <el-form ref="form" label-width="100px">
         <template v-if="info">
           <template v-for="(val, key, index) in info">
             <el-form-item :label="noKeys.includes(key) ? key : infoKeys[key]" :key="index">
-              <el-input v-if="key === 'UserAgent'" type="textarea" :value="val"></el-input>
-              <el-input v-else :value="val"></el-input>
+              <el-input v-if="key === 'UserAgent'" type="textarea" :value="val" disabled></el-input>
+              <el-input v-else :value="val" disabled></el-input>
             </el-form-item>
           </template>
         </template>
@@ -29,7 +29,7 @@ export default {
         "OSVersion": "操作系统版本",
         "ScreenHeight": "屏幕高",
         "ScreenWidth": "屏幕宽",
-        "Language": "当前使用语言(国家)",
+        "Language": "语言国家",
         "NetWork": "联网类型",
         "Orientation": "横竖屏",
         "BrowserInfo": "浏览器信息",
@@ -70,21 +70,20 @@ html, body {
   .device-info {
     height: 100%;
     position: relative;
-    width: 800px;
-    display: flex;
-    justify-content: center;
+    width: 80%;
     .btn {
-      flex: 0 0 130px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 15px 0;
+      text-align: center;
     }
     .el-form {
-      flex: 1;
       margin: 15px 0;
     }
     textarea {
       resize: none;
+    }
+    input, textarea {
+      color: #000 !important;
+      font-size: 16px;
     }
   }
 }
