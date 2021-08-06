@@ -8,7 +8,7 @@
         <template v-if="info">
           <template v-for="(val, key, index) in info">
             <el-form-item :label="noKeys.includes(key) ? key : infoKeys[key]" :key="index">
-              <el-input v-if="key === 'UserAgent'" type="textarea" :value="val" disabled></el-input>
+              <el-input v-if="textareaKeys.includes(key)" type="textarea" :value="val" disabled></el-input>
               <el-input v-else :value="val" disabled></el-input>
             </el-form-item>
           </template>
@@ -40,6 +40,7 @@ export default {
         "UUID": "通用唯一标识 Universally Unique Identifier",
       },
       noKeys: ["UserAgent", "UUID"],
+      textareaKeys: ["BrowserInfo", "GeoPosition", "UserAgent", "UUID"],
       info: {}
     }
   },

@@ -4,7 +4,7 @@
  * @Autor: liyb-d
  * @Date: 2021-08-06 11:05:35 +0800
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-08-07 01:26:53
+ * @LastEditTime: 2021-08-07 01:46:42
  */
 const root = typeof self !== "undefined" ? self : this;
 const _window = root || {};
@@ -651,6 +651,8 @@ export const LogicLibrary = (() => {
         OSVersion: MethodLibrary.getOSVersion(), // 操作系统版本
         Language: MethodLibrary.getLanguage(), // 当前使用的语言-国家
         Orientation: MethodLibrary.getOrientationStatu(), // 横竖屏
+        ScreenHeight: _window.screen.height, // 屏幕高
+        ScreenWidth: _window.screen.width, // 屏幕宽
         BrowserInfo: MethodLibrary.getBrowserInfo(), // 浏览器信息
         Fingerprint: MethodLibrary.createFingerprint(params.domain), // 浏览器指纹
         UserAgent: VariableLibrary.navigator.userAgent, // 包含 appCodeName,appName,appVersion,language,platform 等
@@ -658,8 +660,6 @@ export const LogicLibrary = (() => {
         Date: MethodLibrary.getDate(), // 获取系统时间
         UUID: MethodLibrary.createUUID(), // 生成通用唯一标识
         NetWork: MethodLibrary.getNetwork(), // 联网类型
-        ScreenHeight: _window.screen.height, // 屏幕高
-        ScreenWidth: _window.screen.width, // 屏幕宽
       };
 
       var resultInfo = {};
