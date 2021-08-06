@@ -1,31 +1,84 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="device">
+    <div class="device-info">
+      <div class="btn">
+        <el-button type="primary" @click="init">获取设备信息</el-button>
+      </div>
+      <el-form ref="form" label-width="140px">
+        <template v-if="info">
+          <template v-for="(value, key, index) in info">
+            <el-form-item :label="noKeys.includes(key) ? key : infoKeys[key]" :key="index">
+              <el-input v-if="key === 'UserAgent'" type="textarea" :value="value"></el-input>
+              <el-input v-else :value="value.toString()"></el-input>
+            </el-form-item>
+          </template>
+        </template>
+      </el-form>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import { getDeviceInfo } from "static/getDeviceInfo.js"
+export default {
+  data () {
+    return {
+      infoKeys: {
+        "DeviceType": "设备类型",
+        "OS": "操作系统",
+        "OSVersion": "操作系统版本",
+        "ScreenHeight": "屏幕高",
+        "ScreenWidth": "屏幕宽",
+        "Language": "当前使用语言(国家)",
+        "NetWork": "联网类型",
+        "Orientation": "横竖屏",
+        "BrowserInfo": "浏览器信息",
+        "Fingerprint": "浏览器指纹",
+        "UserAgent": "包含 appCodeName,appName,appVersion,language,platform 等",
+        "GeoPosition": "地理位置",
+        "Date": "系统时间",
+        "UUID": "通用唯一标识 Universally Unique Identifier",
+      },
+      noKeys: ["UserAgent", "UUID"],
+      info: {}
+    }
+  },
+  created () {},
+  methods: {
+    init () {
+      getDeviceInfo({}, (infoResult) => {
+        this.info = infoResult;
+      })
+    }
+  }
 }
+</script>
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<style lang="less">
+.device {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  .device-info {
+    height: 100%;
+    position: relative;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    .btn {
+      min-height: 900px;
+      flex: 0 0 130px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .el-form {
+      flex: 1;
+    }
+    textarea {
+      resize: none;
     }
   }
 }
