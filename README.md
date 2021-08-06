@@ -17,5 +17,8 @@
  - Date: 系统时间
  - UUID: 通用唯一标识 Universally Unique Identifier
 
-### 感谢
+ ### [在线地址](https://dukanglyb.github.io/v-getdeviceinfo/)
+
+
+##### 感谢
 [GetDeviceInfo](https://skillnull.com/others/GetDeviceInfo/index.html)
