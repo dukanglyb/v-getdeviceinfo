@@ -6,10 +6,10 @@
       </div>
       <el-form ref="form" label-width="140px">
         <template v-if="info">
-          <template v-for="(value, key, index) in info">
+          <template v-for="(val, key, index) in info">
             <el-form-item :label="noKeys.includes(key) ? key : infoKeys[key]" :key="index">
-              <el-input v-if="key === 'UserAgent'" type="textarea" :value="value"></el-input>
-              <el-input v-else :value="value.toString()"></el-input>
+              <el-input v-if="key === 'UserAgent'" type="textarea" :value="val"></el-input>
+              <el-input v-else :value="val"></el-input>
             </el-form-item>
           </template>
         </template>
@@ -46,7 +46,9 @@ export default {
   created () {},
   methods: {
     init () {
-      getDeviceInfo({}, (infoResult) => {
+      getDeviceInfo({
+        domain: 'https://dukanglyb.github.io/',
+      }, (infoResult) => {
         this.info = infoResult;
       })
     }
@@ -55,6 +57,10 @@ export default {
 </script>
 
 <style lang="less">
+html, body {
+  height: 100%;
+  width: 100%;
+}
 .device {
   height: 100%;
   width: 100%;
@@ -68,7 +74,6 @@ export default {
     display: flex;
     justify-content: center;
     .btn {
-      min-height: 900px;
       flex: 0 0 130px;
       display: flex;
       justify-content: center;
@@ -76,6 +81,7 @@ export default {
     }
     .el-form {
       flex: 1;
+      margin: 15px 0;
     }
     textarea {
       resize: none;
