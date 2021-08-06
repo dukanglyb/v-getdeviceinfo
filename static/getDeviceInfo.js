@@ -4,7 +4,7 @@
  * @Autor: liyb-d
  * @Date: 2021-08-06 11:05:35 +0800
  * @LastEditors: liyb-d
- * @LastEditTime: 2021-08-06 14:34:10 +0800
+ * @LastEditTime: 2021-08-06 15:22:21 +0800
  */
 const root = typeof self !== "undefined" ? self : this;
 const _window = root || {};
@@ -571,7 +571,6 @@ const MethodLibrary = (() => {
 				navigator && navigator.geolocation && navigator.geolocation.getCurrentPosition(
 						// 位置获取成功
 						function (position) {
-								MethodLibrary.removeLoading()
 								callback(position)
 						},
 						// 位置获取失败
@@ -625,9 +624,9 @@ export const LogicLibrary = (() => {
 					}
 					resultInfo = infoTemp
 			}
-			if (resultInfo.geoPosition) {
+			if (resultInfo.GeoPosition) {
 					MethodLibrary.getGeoPostion(function (position) { // 获取地理位置
-							resultInfo.geoPosition = `经度:${position.coords.longitude} 纬度: ${position.coords.latitude}`;
+							resultInfo.GeoPosition = `经度:${position.coords.longitude} 纬度: ${position.coords.latitude}`;
 							callback(resultInfo);
 					})
 			} else {
