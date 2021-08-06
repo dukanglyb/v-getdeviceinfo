@@ -1,5 +1,7 @@
 # Vue JavaScript 获取设备信息
 
+ ### [在线地址](https://dukanglyb.github.io/v-getdeviceinfo/)
+
 ### JS获取设备信息
 
  - DeviceType: 设备类型
@@ -16,8 +18,6 @@
  - GroPosition: 地理位置
  - Date: 系统时间
  - UUID: 通用唯一标识 Universally Unique Identifier
-
- ### [在线地址](https://dukanglyb.github.io/v-getdeviceinfo/)
 
 
 ##### 感谢
