@@ -4,7 +4,7 @@
  * @Autor: liyb-d
  * @Date: 2021-08-06 11:05:35 +0800
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-08-07 01:46:42
+ * @LastEditTime: 2021-08-08 17:34:26
  */
 const root = typeof self !== "undefined" ? self : this;
 const _window = root || {};
@@ -80,6 +80,13 @@ const VariableLibrary = {
 };
 
 /**
+ * @description: 周
+ * @param {*}
+ * @return {*}
+ */
+const weekTexts = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六",];
+
+/**
  * @description: 补位函数
  * @param {*}
  * @return {*}
@@ -118,13 +125,12 @@ const MethodLibrary = (() => {
       var date = new Date();
       var year = date.getFullYear();
       var month = date.getMonth();
-      var day = date.getDay();
+      var day = date.getDate();
+      var week = date.getDay();
       var hour = date.getHours();
       var minutes = date.getMinutes();
       var seconds = date.getSeconds();
-      return `${year}/${datePad(month)}/${datePad(day)} ${datePad(
-        hour
-      )}:${datePad(minutes)}:${datePad(seconds)}`;
+      return `${year}/${datePad(month)}/${datePad(day)}${weekTexts[week]} ${datePad(hour)}:${datePad(minutes)}:${datePad(seconds)}`;
     },
     // 获取匹配库
     getMatchMap: function(u) {
