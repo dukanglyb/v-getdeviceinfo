@@ -77,7 +77,9 @@ html, body {
       text-align: center;
     }
     .el-form {
-      margin: 15px 0;
+      .el-form-item {
+        margin-bottom: 5px;
+      }
     }
     textarea {
       resize: none;
